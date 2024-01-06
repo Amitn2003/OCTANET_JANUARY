@@ -1,6 +1,6 @@
 # OCTANET_JANUARY
 This Repository contains the projects of my Octanet internship
 
-https://stone-paper-seasor.netlify.app/
+[Live demo of the Landing Page](https://bca-chai-wala.netlify.app/)
 
 ![Webpage screenshot](/img/screenshot.png)
