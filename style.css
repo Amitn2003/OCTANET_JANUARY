@@ -19,6 +19,15 @@ nav > h2 {
 nav > ul{
     display: flex;
 }
+ul > li > a {
+    text-decoration: none;
+    color: black;
+}
+ul > li > a :hover{
+    text-decoration: none;
+    background-color: black;
+    color: white;
+}
 nav > h2 {
     display: inline-block;
     color: rgb(0, 0, 0);
@@ -34,7 +43,7 @@ nav > ul > li {
 
 }
 
-nav > ul > li:hover {
+nav > ul > li:hover  {
     text-decoration: solid;
     background-color: black;
     color: white;
