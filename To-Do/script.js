@@ -1,29 +1,53 @@
-const taskList = document.getElementById('taskList');
-const taskInput = document.querySelector("#taskInput");
+const inputBox = document.getElementById("taskInput");
+const taskList = document.getElementById("taskList");
 
-// console.log(taskList)
-// console.log(taskList.innerHTML)
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-// taskList.innerHTML = "<h3> Changed </h3>"
+// let i = 0;
 
-taskInput.addEventListener("keyup" , function(event) {
-    if (event.key == "Enter") {
-        console.log(this.value)
-        addTask(this.value)
-        this.value = ""
-    }
-})
-
-const addTask = (item) => {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = `
-        ${item} <span> X </span>
-    `
-    listItem.addEventListener("click", function(){
-        this.classList.toggle("done")
-    })
-    listItem.querySelector("span").addEventListener("click", function(event) {
-        listItem.remove()
-    })
-    taskList.appendChild(listItem)
+const deleteTask = (taskIndex) => {
+      if (taskIndex !== -1) {
+        tasks.splice(taskIndex, 1); 
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+      }
+      updateTaskList(tasks);
 }
+
+
+
+
+inputBox.addEventListener("keyup", (event) => {
+  if (event.key == "Enter" && inputBox.value != "") {
+    console.log(inputBox.value);
+    let li = document.createElement("li");
+    li.innerHTML = `<li> <img src="checkbox-icon.svg" alt="" srcset=""> ${inputBox.value} <span onclick="deleteTask(${tasks.length})" >X</span></li>`;
+    li.addEventListener("click", function () {
+      this.classList.toggle("done");
+    });
+
+    taskList.appendChild(li);
+    tasks.push(inputBox.value);
+    
+    localStorage.setItem("tasks", JSON.stringify(tasks)); 
+    inputBox.value = "";
+  }
+});
+
+
+
+const updateTaskList = (tasks) => {
+  taskList.innerHTML = "";
+  for (i in tasks) {
+    console.log(tasks[i]);
+    let li = document.createElement("li");
+    li.innerHTML = `<li> <img src="checkbox-icon.svg" alt="" srcset=""> ${tasks[i]} 
+    <span onclick="deleteTask(${i})" >X</span>
+    </li>`;
+    li.addEventListener("click", function () {
+      this.classList.toggle("done");
+    });
+    taskList.appendChild(li);
+  }
+  inputBox.innerText = "";
+};
+updateTaskList(tasks);

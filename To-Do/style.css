@@ -8,21 +8,16 @@ header{
     width: 100vw;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
-    /* padding: 1.3vw; */
-    background-color: #0984e3;
-    color: white;
+    background-color: aqua;
 }
 header > h2 {
-    padding: 1vw;
+    padding: 1vw 1.5vw;
 }
 #search{
     position: absolute;
     margin: 2px 10px;
     right: 10px;
-    border: 0px;
     padding: 2px 5px;
-    /* border-radius: 5%; */
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -44,24 +39,19 @@ header > h2 {
     font-size: large;
     border-radius: 10px;
     border: 0px;
+    outline: 0px;
     box-shadow: 1px 1px 2px aqua;
+    letter-spacing: 2px;
 }
-
-
-
-
-
-
-
 
 
 .taskList{
     padding: 1rem;
 }
-.taskList > ul  {
-    list-style: circle;
+.taskList {
+    list-style: none;
 }
-.taskList >ul > li {
+.taskList > li {
     background-color: aqua;
     margin: 10px;
     padding: 8px 10px;
@@ -71,16 +61,32 @@ header > h2 {
     align-items: center;
     user-select: none;
     font-size: large;
+    width: 100%;
 }
-.taskList > ul > li > span {
+.taskList > li > li {
+    width: 100%;
+    display: flex;
+    letter-spacing: 1px;
+    padding: 0.1rem;
+    align-items: center;
+}
+#taskList > li > li > span {
     position: relative;
-    right: 15px;
-    width: 15px;
-    /* border: 1px solid black; */
+    margin-left: auto;
+    align-self: flex-start;
 }
 
 .done {
     text-decoration: line-through !important;
     color: gray;
     background-color: rgb(241, 241, 241) !important; 
+}
+.dp-none{
+    display: none;
+    visibility: hidden;
+}
+
+li > img {
+    height: 18px;
+    padding: 0 0.3rem;
 }
